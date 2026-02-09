@@ -1,0 +1,715 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #e5e7eb;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #f9fafb;
+  min-height: 100vh;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 24px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+/* Navbar */
+nav {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 8px 0;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+}
+
+nav ul li {
+  padding: 12px 24px;
+  cursor: pointer;
+  font-size: 15px;
+  color: #555;
+  transition: all 0.2s ease;
+  border-radius: 8px;
+}
+
+nav ul li:hover {
+  color: #2563eb;
+  background-color: #eff6ff;
+}
+
+nav ul li.active {
+  color: #ffffff;
+  font-weight: 600;
+  background-color: #2563eb;
+}
+
+main {
+  padding: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+section {
+  display: none;
+  background-color: #ffffff;
+  padding: 35px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-bottom: 20px;
+}
+
+section h2 {
+  margin-top: 0;
+  margin-bottom: 24px;
+  color: #1f2937;
+  font-size: 24px;
+  text-align: center;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 12px;
+}
+
+#dashboard {
+  display: block;
+}
+
+/* Subject */
+#subjects form {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#subjects input,
+#subjects select {
+  padding: 10px 14px;
+  font-size: 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  min-width: 200px;
+}
+
+#subjects button {
+  padding: 10px 24px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+#subjects button:hover {
+  background-color: #1e4fd8;
+}
+
+/* Priority in Subjects */
+.priority-high {
+  color: rgb(237, 20, 20);
+  font-weight: 500;
+}
+
+.priority-medium {
+  color: #f98806;
+  font-weight: 500;
+}
+
+.priority-low {
+  color: #16a34a;
+  font-weight: 500;
+}
+
+/* Styling Delete button */
+#subject-list {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#subject-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  padding: 12px;
+  background-color: #f9fafb;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+}
+
+#subject-list li > span:first-child {
+  flex: 1;
+}
+
+#subject-list li .delete-btn {
+  padding: 6px 14px;
+  background-color: #dc2626;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+#subject-list li .delete-btn:hover {
+  background-color: #b91c1c;
+}
+
+#subject-list li .edit-btn {
+  padding: 6px 14px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+#subject-list li .edit-btn:hover {
+  background-color: #1e40af;
+}
+
+/* Dashboard style*/
+#dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.card {
+  background-color: #f9fafb;
+  padding: 24px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e5e7eb;
+  text-align: center;
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.card p {
+  font-size: 28px;
+  margin: 10px 0 0;
+  font-weight: 600;
+}
+
+/* Task styling */
+#tasks form {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#task-list {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+#overdue-task-list {
+  max-width: 700px;
+  margin: 0 auto;
+  list-style: none;
+  padding: 12px;
+}
+
+#overdue-task-list li {
+  padding: 16px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #fecaca;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+#overdue-task-list li .task-check {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  flex-shrink: 0;
+  accent-color: #dc2626;
+}
+
+#overdue-task-list li .delete-btn {
+  padding: 6px 14px;
+  background-color: #dc2626;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+#overdue-task-list li .delete-btn:hover {
+  background-color: #b91c1c;
+}
+
+#overdue-task-list li .edit-btn {
+  padding: 6px 14px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+#overdue-task-list li .edit-btn:hover {
+  background-color: #1e40af;
+}
+
+#overdue-section {
+  background-color: #fef2f2;
+  padding: 0;
+  border-radius: 8px;
+  border: 1px solid #fecaca;
+  margin-top: 24px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+}
+
+#overdue-section h3 {
+  margin-top: 0;
+  text-align: left;
+  border: none;
+  padding: 0;
+}
+
+#tasks input,
+#tasks select {
+  padding: 10px 14px;
+  font-size: 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  min-width: 180px;
+}
+
+#tasks input[type="datetime-local"] {
+  min-width: 220px;
+}
+
+#tasks button {
+  padding: 10px 24px;
+  background-color: #16a34a;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+#tasks button:hover {
+  background-color: #15803d;
+}
+
+/* Task section headers */
+.section-header-overdue,
+.section-header-active {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 700px;
+  margin: 20px auto 12px auto;
+  padding: 12px 16px;
+  border-radius: 8px;
+}
+
+.section-header-overdue {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  border: 1px solid #fca5a5;
+}
+
+.section-header-active {
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  border: 1px solid #93c5fd;
+  margin-top: 0;
+}
+
+.section-header-overdue h3,
+.section-header-active h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #1f2937;
+  text-align: left;
+  border: none;
+  padding: 0;
+}
+
+.section-header-overdue h3 {
+  color: #dc2626;
+}
+
+.section-header-active h3 {
+  color: #2563eb;
+}
+
+.task-count {
+  background-color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 14px;
+  color: #1f2937;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Task info styling */
+.task-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.task-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.task-title.completed {
+  text-decoration: line-through;
+  color: #9ca3af;
+}
+
+.task-meta {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.task-type-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.task-type-badge.type-assignment {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.task-type-badge.type-exam {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.task-type-badge.type-revision {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.task-deadline {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.task-deadline.overdue {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+.task-deadline.upcoming {
+  color: #f59e0b;
+  font-weight: 600;
+}
+
+#tasks h3 {
+  max-width: 700px;
+  margin: 0 auto 12px auto;
+  color: #1f2937;
+  font-size: 18px;
+  text-align: left;
+}
+
+/* Setting */
+#settings {
+  text-align: center;
+}
+
+#settings button {
+  padding: 12px 28px;
+  background-color: #dc2626;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+#settings button:hover {
+  background-color: #b91c1c;
+}
+
+#reset-info {
+  margin-top: 10px;
+  color: #666;
+  font-size: 13px;
+}
+
+/* Schedule */
+#schedule form {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+  justify-content: center;
+}
+
+#schedule-list {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+#schedule input,
+#schedule select {
+  padding: 10px 14px;
+  font-size: 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  min-width: 160px;
+}
+
+#schedule button {
+  padding: 10px 24px;
+  background-color: #9333ea;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+#schedule-list li,
+#task-list li {
+  padding: 16px;
+  background-color: #f9fafb;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+#schedule-list li {
+  justify-content: flex-start;
+}
+
+#schedule-list li span {
+  flex: 1;
+}
+
+#task-list li .task-check {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  flex-shrink: 0;
+  accent-color: #2563eb;
+}
+
+#task-list li {
+  justify-content: flex-start;
+}
+
+#task-list li .delete-btn {
+  padding: 6px 14px;
+  background-color: #dc2626;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+#task-list li .delete-btn:hover {
+  background-color: #b91c1c;
+}
+
+#task-list li .edit-btn {
+  padding: 6px 14px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+#task-list li .edit-btn:hover {
+  background-color: #1e40af;
+}
+
+#schedule-list li .delete-btn {
+  padding: 6px 14px;
+  background-color: #dc2626;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+#schedule-list li .delete-btn:hover {
+  background-color: #b91c1c;
+}
+
+#schedule-list li .edit-btn {
+  padding: 6px 14px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+#schedule-list li .edit-btn:hover {
+  background-color: #1e40af;
+}
+
+/* Progress */
+#progress {
+  text-align: center;
+}
+
+#progress-value {
+  font-size: 48px;
+  font-weight: 700;
+  color: #2563eb;
+  margin: 20px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    box-shadow: none;
+  }
+
+  main {
+    padding: 16px;
+  }
+
+  section {
+    padding: 20px;
+  }
+
+  nav ul li {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+
+  #dashboard-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .task-info {
+    gap: 4px;
+  }
+
+  .task-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .section-header-overdue,
+  .section-header-active {
+    padding: 10px 12px;
+  }
+
+  .section-header-overdue h3,
+  .section-header-active h3 {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 20px;
+  }
+
+  section h2 {
+    font-size: 20px;
+  }
+
+  nav ul li {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  #dashboard-cards {
+    grid-template-columns: 1fr;
+  }
+
+  #task-list li,
+  #overdue-task-list li {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .task-title {
+    font-size: 14px;
+  }
+
+  .task-type-badge {
+    font-size: 11px;
+    padding: 2px 8px;
+  }
+
+  .task-deadline {
+    font-size: 12px;
+  }
+
+  .section-header-overdue h3,
+  .section-header-active h3 {
+    font-size: 15px;
+  }
+}
