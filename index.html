@@ -177,21 +177,39 @@
               <option value="Revision">Revision</option>
             </select>
 
+            <select id="task-priority">
+              <option value="High">High Priority</option>
+              <option value="Medium">Medium Priority</option>
+              <option value="Low">Low Priority</option>
+            </select>
+
             <button type="submit">Add Task</button>
           </form>
 
-          <div class="section-header-active">
-            <h3>Active Tasks</h3>
-            <span class="task-count" id="active-count">0</span>
+          <div class="task-filter-navigation">
+            <div class="task-filter active" data-filter="all">All Tasks</div>
+            <div class="task-filter" data-filter="incomplete">Incomplete</div>
+            <div class="task-filter" data-filter="completed">Completed</div>
+            <div class="task-filter" data-filter="overdue">Overdue</div>
           </div>
-          <ul id="task-list"></ul>
 
-          <div id="overdue-section" style="display: none">
-            <div class="section-header-overdue">
-              <h3>Overdue Tasks</h3>
-              <span class="task-count" id="overdue-count">0</span>
+          <div class="task-filter-container">
+            <div class="task-filter-section active" data-filter="all">
+              <h3>All Tasks</h3>
+              <ul class="filtered-task-list" data-filter="all"></ul>
             </div>
-            <ul id="overdue-task-list"></ul>
+            <div class="task-filter-section" data-filter="incomplete">
+              <h3>Incomplete Tasks</h3>
+              <ul class="filtered-task-list" data-filter="incomplete"></ul>
+            </div>
+            <div class="task-filter-section" data-filter="completed">
+              <h3>Completed Tasks</h3>
+              <ul class="filtered-task-list" data-filter="completed"></ul>
+            </div>
+            <div class="task-filter-section" data-filter="overdue">
+              <h3>Overdue Tasks</h3>
+              <ul class="filtered-task-list" data-filter="overdue"></ul>
+            </div>
           </div>
         </section>
 
@@ -225,11 +243,10 @@
             <h3>Theme</h3>
             <div class="theme-toggle">
               <button class="theme-btn" data-theme="light">
-                <span class="theme-icon">☀️</span>
                 <span>Light</span>
               </button>
+
               <button class="theme-btn" data-theme="dark">
-                <span class="theme-icon">🌙</span>
                 <span>Dark</span>
               </button>
             </div>

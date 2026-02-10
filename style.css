@@ -326,7 +326,7 @@ section h2 {
 
 #tasks button {
   padding: 10px 24px;
-  background-color: #16a34a;
+  background-color: #38bdf8;
   color: white;
   border: none;
   border-radius: 6px;
@@ -336,7 +336,100 @@ section h2 {
 }
 
 #tasks button:hover {
-  background-color: #15803d;
+  background-color: #0ea5e9;
+}
+
+/* Task Filter Navigation */
+.task-filter-navigation {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  padding: 0 12px;
+}
+
+.task-filter {
+  padding: 10px 18px;
+  background-color: #f3f4f6;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+.task-filter.active {
+  background-color: #38bdf8;
+  border-color: #38bdf8;
+  color: #ffffff;
+}
+
+/* Task Filter Container */
+.task-filter-container {
+  position: relative;
+  min-height: 200px;
+}
+
+.task-filter-section {
+  display: none;
+}
+
+.task-filter-section.active {
+  display: block;
+}
+
+.task-filter-section h3 {
+  text-align: center;
+  color: #6b7280;
+  font-size: 18px;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.filtered-task-list {
+  max-width: 700px;
+  margin: 0 auto;
+  list-style: none;
+  padding: 0;
+}
+
+.filtered-task-list li {
+  padding: 16px;
+  background-color: #f9fafb;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  justify-content: flex-start;
+}
+
+/* Task Priority Badges */
+.task-priority-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.task-priority-badge.priority-high {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.task-priority-badge.priority-medium {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.task-priority-badge.priority-low {
+  background-color: #d1fae5;
+  color: #065f46;
 }
 
 /* Task section headers */
@@ -899,6 +992,15 @@ section h2 {
   #taskChart {
     max-height: 300px;
   }
+
+  .task-filter-navigation {
+    gap: 6px;
+  }
+
+  .task-filter {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -912,6 +1014,11 @@ section h2 {
 
   .chart-container {
     padding: 16px;
+  }
+
+  .task-filter {
+    padding: 7px 12px;
+    font-size: 12px;
   }
 }
 
@@ -1090,6 +1197,28 @@ section h2 {
 
 [data-theme="dark"] .task-deadline {
   color: #9ca3af;
+}
+
+[data-theme="dark"] .task-filter {
+  background-color: #1f2937;
+  border-color: #374151;
+  color: #9ca3af;
+}
+
+[data-theme="dark"] .task-filter.active {
+  background-color: #38bdf8;
+  border-color: #38bdf8;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .task-filter-section h3 {
+  color: #9ca3af;
+}
+
+[data-theme="dark"] .filtered-task-list li {
+  background-color: #1f2937;
+  border: 1px solid #374151;
+  color: #f9fafb;
 }
 
 [data-theme="dark"] .section-header-overdue {
