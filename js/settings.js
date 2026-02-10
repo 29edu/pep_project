@@ -32,6 +32,36 @@ themeButtons.forEach((button) => {
   });
 });
 
+// Export data functionality
+const exportBtn = document.getElementById("export-data-btn");
+
+exportBtn.addEventListener("click", () => {
+  // Gather all data from localStorage
+  const data = {
+    subjects: JSON.parse(localStorage.getItem("subjects") || "[]"),
+    schedules: JSON.parse(localStorage.getItem("schedules") || "[]"),
+    tasks: JSON.parse(localStorage.getItem("tasks") || "[]"),
+    theme: localStorage.getItem("theme") || "light",
+    exportDate: new Date().toISOString(),
+  };
+
+  // Convert to JSON string
+  const jsonString = JSON.stringify(data, null, 2);
+
+  // Create blob and download
+  const blob = new Blob([jsonString], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = `study-planner-data-${new Date().toISOString().split("T")[0]}.json`;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+
+  alert("Data exported successfully!");
+});
+
 // Reset data management
 const resetBtn = document.getElementById("reset-data-btn");
 

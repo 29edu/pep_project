@@ -407,6 +407,52 @@ section h2 {
   justify-content: flex-start;
 }
 
+.filtered-task-list li .task-check {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  flex-shrink: 0;
+  accent-color: #38bdf8;
+}
+
+.filtered-task-list li .task-actions {
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.filtered-task-list li .edit-btn {
+  padding: 6px 14px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.filtered-task-list li .edit-btn:hover {
+  background-color: #1e40af;
+}
+
+.filtered-task-list li .delete-btn {
+  padding: 6px 14px;
+  background-color: #dc2626;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.filtered-task-list li .delete-btn:hover {
+  background-color: #b91c1c;
+}
+
 /* Task Priority Badges */
 .task-priority-badge {
   display: inline-block;
@@ -570,10 +616,19 @@ section h2 {
   cursor: pointer;
   font-size: 15px;
   font-weight: 600;
+  margin: 0 8px 12px 8px;
 }
 
 #settings button:hover {
   background-color: #b91c1c;
+}
+
+#export-data-btn {
+  background-color: #16a34a !important;
+}
+
+#export-data-btn:hover {
+  background-color: #15803d !important;
 }
 
 #reset-info {
@@ -846,14 +901,71 @@ section h2 {
     grid-template-columns: 1fr 1fr;
   }
 
+  /* Task form responsive */
+  #tasks form {
+    gap: 10px;
+  }
+
+  #tasks input,
+  #tasks select {
+    min-width: 100%;
+    flex: 1 1 100%;
+  }
+
+  #tasks input[type="datetime-local"] {
+    min-width: 100%;
+  }
+
+  #tasks button {
+    width: 100%;
+    padding: 12px;
+  }
+
+  /* Task filter responsive */
+  .task-filter-navigation {
+    gap: 6px;
+    padding: 0 8px;
+  }
+
+  .task-filter {
+    padding: 8px 14px;
+    font-size: 13px;
+    flex: 1;
+    text-align: center;
+    min-width: 0;
+  }
+
+  .task-filter-section h3 {
+    font-size: 16px;
+  }
+
+  /* Task list items responsive */
+  .filtered-task-list li {
+    padding: 12px;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
   .task-info {
     gap: 4px;
+    flex: 1 1 100%;
   }
 
   .task-meta {
     flex-direction: column;
     align-items: flex-start;
     gap: 6px;
+  }
+
+  .task-check {
+    width: 18px;
+    height: 18px;
+  }
+
+  .edit-btn,
+  .delete-btn {
+    padding: 6px 12px;
+    font-size: 12px;
   }
 
   .section-header-overdue,
@@ -877,8 +989,13 @@ section h2 {
     font-size: 20px;
   }
 
+  section {
+    padding: 16px 12px;
+  }
+
   section h2 {
     font-size: 20px;
+    margin-bottom: 16px;
   }
 
   nav ul li {
@@ -890,28 +1007,117 @@ section h2 {
     grid-template-columns: 1fr;
   }
 
+  /* Task form small screen */
+  #tasks form {
+    gap: 8px;
+    padding: 0 4px;
+  }
+
+  #tasks input,
+  #tasks select {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  #tasks button {
+    padding: 12px;
+    font-size: 15px;
+  }
+
+  /* Task filters small screen */
+  .task-filter-navigation {
+    gap: 4px;
+    padding: 0 4px;
+  }
+
+  .task-filter {
+    padding: 7px 10px;
+    font-size: 12px;
+    border-width: 1px;
+  }
+
+  .task-filter-section h3 {
+    font-size: 15px;
+  }
+
+  /* Task list small screen */
+  .filtered-task-list {
+    padding: 0 4px;
+  }
+
+  .filtered-task-list li,
   #task-list li,
   #overdue-task-list li {
-    padding: 12px;
-    gap: 10px;
+    padding: 10px;
+    gap: 8px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .task-check {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    width: 16px;
+    height: 16px;
+  }
+
+  .filtered-task-list li {
+    padding-left: 40px;
+    position: relative;
+  }
+
+  .task-info {
+    width: 100%;
   }
 
   .task-title {
     font-size: 14px;
+    word-break: break-word;
   }
 
-  .task-type-badge {
-    font-size: 11px;
-    padding: 2px 8px;
+  .task-meta {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 6px;
+    width: 100%;
+  }
+
+  .task-type-badge,
+  .task-priority-badge {
+    font-size: 10px;
+    padding: 3px 8px;
   }
 
   .task-deadline {
+    font-size: 11px;
+    width: 100%;
+  }
+
+  .task-actions {
+    display: flex;
+    gap: 6px;
+    width: 100%;
+    margin-top: 4px;
+    margin-left: 0 !important;
+  }
+
+  .edit-btn,
+  .delete-btn {
+    flex: 1;
+    padding: 8px;
     font-size: 12px;
   }
 
   .section-header-overdue h3,
   .section-header-active h3 {
-    font-size: 15px;
+    font-size: 14px;
+  }
+
+  .section-header-overdue,
+  .section-header-active {
+    padding: 8px 10px;
+    margin: 16px 8px 10px 8px;
   }
 
   .day-tab {
@@ -921,6 +1127,14 @@ section h2 {
 
   .day-schedule h3 {
     font-size: 16px;
+  }
+
+  /* Settings buttons responsive */
+  #settings button {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto 12px auto;
+    display: block;
   }
 }
 
