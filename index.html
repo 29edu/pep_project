@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   </head>
   <body>
     <div class="container">
@@ -143,8 +144,24 @@
         <section id="progress">
           <h2>Progress Analysis</h2>
 
-          <p>Overall Task Completion</p>
-          <h3 id="progress-value">0%</h3>
+          <div class="progress-overview">
+            <div class="progress-stat">
+              <p class="stat-label">Overall Completion</p>
+              <h3 id="progress-value" class="stat-value">0%</h3>
+            </div>
+            <div class="progress-stat">
+              <p class="stat-label">Completed Tasks</p>
+              <h3 id="completed-tasks" class="stat-value">0</h3>
+            </div>
+            <div class="progress-stat">
+              <p class="stat-label">Total Tasks</p>
+              <h3 id="total-tasks" class="stat-value">0</h3>
+            </div>
+          </div>
+
+          <div class="chart-container">
+            <canvas id="taskChart"></canvas>
+          </div>
         </section>
 
         <section id="settings">
@@ -159,6 +176,13 @@
       </main>
     </div>
 
-    <script src="index.js"></script>
+    <!-- Load JavaScript modules in order -->
+    <script src="js/dashboard.js"></script>
+    <script src="js/progress.js"></script>
+    <script src="js/subjects.js"></script>
+    <script src="js/schedule.js"></script>
+    <script src="js/tasks.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/navigation.js"></script>
   </body>
 </html>

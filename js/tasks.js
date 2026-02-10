@@ -1,201 +1,4 @@
-const navItems = document.querySelectorAll("nav ul li");
-const sections = document.querySelectorAll("main section");
-
-// Set Dashboard as active by default
-navItems[0].classList.add("active");
-
-navItems.forEach((item) => {
-  item.addEventListener("click", () => {
-    console.log(item.innerText);
-  });
-});
-
-navItems.forEach((item) => {
-  item.addEventListener("click", () => {
-    navItems.forEach((nav) => nav.classList.remove("active"));
-
-    sections.forEach((section) => (section.style.display = "none"));
-
-    item.classList.add("active");
-
-    const sectionId = item.innerText.toLowerCase();
-
-    document.getElementById(sectionId).style.display = "block";
-  });
-});
-
-// Subjects
-let subjects = []; // to hold subjects
-
-const subjectForm = document.getElementById("subject-form");
-const subjectNameInput = document.getElementById("subject-name");
-const subjectPrioritySelect = document.getElementById("subject-priority");
-const subjectList = document.getElementById("subject-list");
-
-// submit form for subjects
-subjectForm.addEventListener("submit", function (e) {
-  e.preventDefault();
-
-  const subjectName = subjectNameInput.value;
-  const subjectPriority = subjectPrioritySelect.value;
-
-  const subject = {
-    name: subjectName,
-    priority: subjectPriority,
-  };
-
-  subjects.push(subject);
-
-  localStorage.setItem("subjects", JSON.stringify(subjects));
-
-  renderSubjects();
-
-  subjectNameInput.value = "";
-});
-
-// Display the added subjects on the screen
-function renderSubjects() {
-  subjectList.innerHTML = "";
-
-  subjects.forEach((sub, index) => {
-    const li = document.createElement("li");
-
-    li.innerHTML = `
-            <span>${sub.name} 
-            <span class="priority-${sub.priority.toLowerCase()}">
-                (${sub.priority})
-            </span></span>
-            <button class="edit-btn">Edit</button>
-            <button class="delete-btn">Delete</button>
-        `;
-
-    const editBtn = li.querySelector(".edit-btn");
-
-    editBtn.addEventListener("click", () => {
-      subjectNameInput.value = sub.name;
-      subjectPrioritySelect.value = sub.priority;
-
-      subjects.splice(index, 1);
-      localStorage.setItem("subjects", JSON.stringify(subjects));
-      renderSubjects();
-
-      subjectNameInput.focus();
-    });
-
-    const deleteBtn = li.querySelector(".delete-btn");
-
-    deleteBtn.addEventListener("click", () => {
-      subjects.splice(index, 1);
-      localStorage.setItem("subjects", JSON.stringify(subjects));
-      renderSubjects();
-    });
-
-    subjectList.appendChild(li);
-  });
-
-  updateDashboard();
-}
-
-// loading data from local storage
-const savedSubjects = localStorage.getItem("subjects");
-
-if (savedSubjects) {
-  subjects = JSON.parse(savedSubjects);
-  renderSubjects();
-}
-
-// Dashboard
-function updateDashboard() {
-  document.getElementById("total-subjects").innerText = subjects.length;
-
-  document.getElementById("high-count").innerText = subjects.filter(
-    (s) => s.priority === "High",
-  ).length;
-
-  document.getElementById("medium-count").innerText = subjects.filter(
-    (s) => s.priority === "Medium",
-  ).length;
-
-  document.getElementById("low-count").innerText = subjects.filter(
-    (s) => s.priority === "Low",
-  ).length;
-}
-
-// Schedule
-let schedules = [];
-
-const scheduleForm = document.getElementById("schedule-form");
-const scheduleSubjectInput = document.getElementById("schedule-subject");
-const scheduleDaySelect = document.getElementById("schedule-day");
-const startTimeInput = document.getElementById("start-time");
-const endTimeInput = document.getElementById("end-time");
-const scheduleList = document.getElementById("schedule-list");
-
-scheduleForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  const schedule = {
-    subject: scheduleSubjectInput.value,
-    day: scheduleDaySelect.value,
-    startTime: startTimeInput.value,
-    endTime: endTimeInput.value,
-  };
-
-  schedules.push(schedule);
-  localStorage.setItem("schedules", JSON.stringify(schedules));
-  renderSchedules();
-
-  scheduleForm.reset();
-});
-
-function renderSchedules() {
-  scheduleList.innerHTML = "";
-
-  schedules.forEach((schedule, index) => {
-    const li = document.createElement("li");
-
-    li.innerHTML = `
-            <span><strong>${schedule.day}</strong>: ${schedule.subject} 
-            (${schedule.startTime} - ${schedule.endTime})</span>
-            <button class="edit-btn">Edit</button>
-            <button class="delete-btn">Delete</button>
-        `;
-
-    const editBtn = li.querySelector(".edit-btn");
-
-    editBtn.addEventListener("click", () => {
-      scheduleSubjectInput.value = schedule.subject;
-      scheduleDaySelect.value = schedule.day;
-      startTimeInput.value = schedule.startTime;
-      endTimeInput.value = schedule.endTime;
-
-      schedules.splice(index, 1);
-      localStorage.setItem("schedules", JSON.stringify(schedules));
-      renderSchedules();
-
-      scheduleSubjectInput.focus();
-    });
-
-    const deleteBtn = li.querySelector(".delete-btn");
-
-    deleteBtn.addEventListener("click", () => {
-      schedules.splice(index, 1);
-      localStorage.setItem("schedules", JSON.stringify(schedules));
-      renderSchedules();
-    });
-
-    scheduleList.appendChild(li);
-  });
-}
-
-const savedSchedules = localStorage.getItem("schedules");
-
-if (savedSchedules) {
-  schedules = JSON.parse(savedSchedules);
-  renderSchedules();
-}
-
-// Handling Tasks
+// Tasks management
 const taskForm = document.getElementById("task-form");
 const taskTitleInput = document.getElementById("task-title");
 const taskDeadlineInput = document.getElementById("task-deadline");
@@ -219,6 +22,7 @@ taskForm.addEventListener("submit", (e) => {
   tasks.push(task);
   localStorage.setItem("tasks", JSON.stringify(tasks));
   renderTasks();
+  updateProgress();
 
   taskForm.reset();
 });
@@ -305,6 +109,7 @@ function renderTasks() {
       tasks.splice(taskIndex, 1);
       localStorage.setItem("tasks", JSON.stringify(tasks));
       renderTasks();
+      updateProgress();
 
       taskTitleInput.focus();
     });
@@ -315,6 +120,7 @@ function renderTasks() {
       tasks.splice(taskIndex, 1);
       localStorage.setItem("tasks", JSON.stringify(tasks));
       renderTasks();
+      updateProgress();
     });
 
     overdueTaskList.appendChild(li);
@@ -375,6 +181,7 @@ function renderTasks() {
       tasks.splice(taskIndex, 1);
       localStorage.setItem("tasks", JSON.stringify(tasks));
       renderTasks();
+      updateProgress();
 
       taskTitleInput.focus();
     });
@@ -385,6 +192,7 @@ function renderTasks() {
       tasks.splice(taskIndex, 1);
       localStorage.setItem("tasks", JSON.stringify(tasks));
       renderTasks();
+      updateProgress();
     });
 
     taskList.appendChild(li);
@@ -401,6 +209,9 @@ function renderTasks() {
     emptyMessage.innerHTML = "No active tasks. Add a task to get started! 📝";
     taskList.appendChild(emptyMessage);
   }
+
+  // Update progress after rendering tasks
+  updateProgress();
 }
 
 const savedTasks = localStorage.getItem("tasks");
@@ -409,42 +220,3 @@ if (savedTasks) {
   tasks = JSON.parse(savedTasks);
   renderTasks();
 }
-
-// Progress
-function updateProgress() {
-  if (tasks.length === 0) return;
-
-  const completedTasks = tasks.filter((t) => t.completed).length;
-  const percentage = Math.round((completedTasks / tasks.length) * 100);
-
-  document.getElementById("progress-value").innerText = percentage + "%";
-}
-
-// Setting
-const resetBtn = document.getElementById("reset-data-btn");
-
-resetBtn.addEventListener("click", () => {
-  const confirmReset = confirm(
-    "Are you sure you want to delete all subjects, schedules, and tasks?",
-  );
-
-  if (!confirmReset) return;
-
-  // clear localStorage
-  localStorage.removeItem("subjects");
-  localStorage.removeItem("schedules");
-  localStorage.removeItem("tasks");
-
-  // clear arrays
-  subjects = [];
-  schedules = [];
-  tasks = [];
-
-  // update UI
-  renderSubjects();
-  renderSchedules();
-  renderTasks();
-  updateDashboard();
-
-  alert("All data has been reset successfully!");
-});
