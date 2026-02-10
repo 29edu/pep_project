@@ -498,6 +498,109 @@ section h2 {
   justify-content: center;
 }
 
+/* Day Navigation */
+.day-navigation {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  padding: 0 12px;
+}
+
+.day-tab {
+  padding: 10px 16px;
+  background-color: #f3f4f6;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6b7280;
+  transition: all 0.2s ease;
+}
+
+.day-tab.active {
+  background-color: #9333ea;
+  border-color: #9333ea;
+  color: #ffffff;
+}
+
+/* Day Schedule Container */
+.day-schedule-container {
+  position: relative;
+  min-height: 200px;
+}
+
+.day-schedule {
+  display: none;
+}
+
+.day-schedule.active {
+  display: block;
+}
+
+.day-schedule h3 {
+  text-align: center;
+  color: #6b7280;
+  font-size: 18px;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.schedule-list {
+  max-width: 700px;
+  margin: 0 auto;
+  list-style: none;
+  padding: 0;
+}
+
+.schedule-list li {
+  padding: 16px;
+  background-color: #f9fafb;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  justify-content: flex-start;
+}
+
+.schedule-list li span {
+  flex: 1;
+}
+
+.schedule-list li .delete-btn {
+  padding: 6px 14px;
+  background-color: #dc2626;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.schedule-list li .delete-btn:hover {
+  background-color: #b91c1c;
+}
+
+.schedule-list li .edit-btn {
+  padding: 6px 14px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.schedule-list li .edit-btn:hover {
+  background-color: #1e40af;
+}
+
 #schedule-list {
   max-width: 700px;
   margin: 0 auto;
@@ -669,6 +772,11 @@ section h2 {
   .section-header-active h3 {
     font-size: 16px;
   }
+
+  .day-tab {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -711,6 +819,15 @@ section h2 {
   .section-header-overdue h3,
   .section-header-active h3 {
     font-size: 15px;
+  }
+
+  .day-tab {
+    padding: 7px 10px;
+    font-size: 12px;
+  }
+
+  .day-schedule h3 {
+    font-size: 16px;
   }
 }
 
@@ -927,11 +1044,28 @@ section h2 {
 
 [data-theme="dark"] #subject-list li,
 [data-theme="dark"] #schedule-list li,
+[data-theme="dark"] .schedule-list li,
 [data-theme="dark"] #task-list li,
 [data-theme="dark"] #overdue-task-list li {
   background-color: #1f2937;
   border: 1px solid #374151;
   color: #f9fafb;
+}
+
+[data-theme="dark"] .day-tab {
+  background-color: #1f2937;
+  border-color: #374151;
+  color: #9ca3af;
+}
+
+[data-theme="dark"] .day-tab.active {
+  background-color: #9333ea;
+  border-color: #9333ea;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .day-schedule h3 {
+  color: #9ca3af;
 }
 
 [data-theme="dark"] .edit-btn {

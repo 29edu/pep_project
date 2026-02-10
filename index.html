@@ -48,6 +48,21 @@
               <h3>Low Priority</h3>
               <p id="low-count">0</p>
             </div>
+
+            <div class="card">
+              <h3>Total Tasks</h3>
+              <p id="dashboard-total-tasks">0</p>
+            </div>
+
+            <div class="card">
+              <h3>Completed Tasks</h3>
+              <p id="dashboard-completed-tasks">0</p>
+            </div>
+
+            <div class="card">
+              <h3>Overdue Tasks</h3>
+              <p id="dashboard-overdue-tasks">0</p>
+            </div>
           </div>
         </section>
 
@@ -101,7 +116,46 @@
             <button type="submit">Add Slot</button>
           </form>
 
-          <ul id="schedule-list"></ul>
+          <div class="day-navigation">
+            <div class="day-tab active" data-day="Monday">Monday</div>
+            <div class="day-tab" data-day="Tuesday">Tuesday</div>
+            <div class="day-tab" data-day="Wednesday">Wednesday</div>
+            <div class="day-tab" data-day="Thursday">Thursday</div>
+            <div class="day-tab" data-day="Friday">Friday</div>
+            <div class="day-tab" data-day="Saturday">Saturday</div>
+            <div class="day-tab" data-day="Sunday">Sunday</div>
+          </div>
+
+          <div class="day-schedule-container">
+            <div class="day-schedule active" data-day="Monday">
+              <h3>Monday Schedule</h3>
+              <ul class="schedule-list" data-day="Monday"></ul>
+            </div>
+            <div class="day-schedule" data-day="Tuesday">
+              <h3>Tuesday Schedule</h3>
+              <ul class="schedule-list" data-day="Tuesday"></ul>
+            </div>
+            <div class="day-schedule" data-day="Wednesday">
+              <h3>Wednesday Schedule</h3>
+              <ul class="schedule-list" data-day="Wednesday"></ul>
+            </div>
+            <div class="day-schedule" data-day="Thursday">
+              <h3>Thursday Schedule</h3>
+              <ul class="schedule-list" data-day="Thursday"></ul>
+            </div>
+            <div class="day-schedule" data-day="Friday">
+              <h3>Friday Schedule</h3>
+              <ul class="schedule-list" data-day="Friday"></ul>
+            </div>
+            <div class="day-schedule" data-day="Saturday">
+              <h3>Saturday Schedule</h3>
+              <ul class="schedule-list" data-day="Saturday"></ul>
+            </div>
+            <div class="day-schedule" data-day="Sunday">
+              <h3>Sunday Schedule</h3>
+              <ul class="schedule-list" data-day="Sunday"></ul>
+            </div>
+          </div>
         </section>
 
         <section id="tasks">

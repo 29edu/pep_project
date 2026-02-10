@@ -23,6 +23,7 @@ taskForm.addEventListener("submit", (e) => {
   localStorage.setItem("tasks", JSON.stringify(tasks));
   renderTasks();
   updateProgress();
+  updateDashboard();
 
   taskForm.reset();
 });
@@ -110,6 +111,7 @@ function renderTasks() {
       localStorage.setItem("tasks", JSON.stringify(tasks));
       renderTasks();
       updateProgress();
+      updateDashboard();
 
       taskTitleInput.focus();
     });
@@ -121,6 +123,7 @@ function renderTasks() {
       localStorage.setItem("tasks", JSON.stringify(tasks));
       renderTasks();
       updateProgress();
+      updateDashboard();
     });
 
     overdueTaskList.appendChild(li);
@@ -161,6 +164,7 @@ function renderTasks() {
       task.completed = checkbox.checked;
       localStorage.setItem("tasks", JSON.stringify(tasks));
       updateProgress();
+      updateDashboard();
       renderTasks();
     });
 
@@ -182,6 +186,7 @@ function renderTasks() {
       localStorage.setItem("tasks", JSON.stringify(tasks));
       renderTasks();
       updateProgress();
+      updateDashboard();
 
       taskTitleInput.focus();
     });
@@ -193,6 +198,7 @@ function renderTasks() {
       localStorage.setItem("tasks", JSON.stringify(tasks));
       renderTasks();
       updateProgress();
+      updateDashboard();
     });
 
     taskList.appendChild(li);
@@ -212,6 +218,7 @@ function renderTasks() {
 
   // Update progress after rendering tasks
   updateProgress();
+  updateDashboard();
 }
 
 const savedTasks = localStorage.getItem("tasks");
